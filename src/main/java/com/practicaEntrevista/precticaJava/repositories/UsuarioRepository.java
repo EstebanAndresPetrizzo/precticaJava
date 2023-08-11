@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 @Repository
 public interface UsuarioRepository extends CrudRepository<UsuarioModel, Long> {
-    public abstract ArrayList<UsuarioModel> findByNombre(String nombres);
+    ArrayList<UsuarioModel> findByNombre(String nombres);
 }
