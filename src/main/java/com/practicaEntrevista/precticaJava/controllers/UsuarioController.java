@@ -1,11 +1,11 @@
 package com.practicaEntrevista.precticaJava.controllers;
 
-import com.practicaEntrevista.precticaJava.model.UsuarioModel;
+import com.practicaEntrevista.precticaJava.services.UsuarioDTO;
 import com.practicaEntrevista.precticaJava.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -15,29 +15,27 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @GetMapping
-    public ArrayList<UsuarioModel> obtenerUsuarios(){
-        return usuarioService.obtenerUsuarios();
+    public List<UsuarioDTO> getUsers(){
+        return usuarioService.getUsers();
     }
 
     @PostMapping
-    public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
-        return this.usuarioService.guardarUsuario(usuario);
+    public UsuarioDTO saveUser(@RequestBody UsuarioDTO usuario){
+        return this.usuarioService.seveUser(usuario);
     }
 
     @GetMapping (path = "/query")
-    public ArrayList<UsuarioModel> findByNombre(@RequestParam("nombre") String nombre){
-        return this.usuarioService.findByNombre(nombre);
+    public List<UsuarioDTO> findByName(@RequestParam("nombre") String name){
+        return this.usuarioService.findByName(name);
     }
 
     @GetMapping (path = "/{id}")
-    public Optional<UsuarioModel> findById(@PathVariable("id") Long id){
+    public Optional<UsuarioDTO> findById(@PathVariable("id") Long id){
         return this.usuarioService.findById(id);
     }
 
-
-
     @DeleteMapping (path = "/{id}")
-    public Boolean eliminarUsuario(@PathVariable("id") Long id){
-        return this.usuarioService.eliminarUsuario(id);
+    public Boolean deleteUser(@PathVariable("id") Long id){
+        return this.usuarioService.deleteUser(id);
     }
 }
