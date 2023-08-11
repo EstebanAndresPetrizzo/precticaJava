@@ -1,0 +1,4 @@
+mvn clean install
+docker buil -t practica-java:1.0 .
+docker images
+docker run --publish 8080:8080 {imageId}

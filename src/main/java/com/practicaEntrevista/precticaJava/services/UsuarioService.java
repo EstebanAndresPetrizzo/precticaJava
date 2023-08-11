@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -18,5 +19,22 @@ public class UsuarioService {
 
     public UsuarioModel guardarUsuario(UsuarioModel usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public ArrayList<UsuarioModel> findByNombre(String nombre){
+        return usuarioRepository.findByNombre(nombre);
+    }
+
+    public Optional<UsuarioModel> findById(Long id){
+        return usuarioRepository.findById(id);
+    }
+
+    public Boolean eliminarUsuario(Long id){
+        try {
+            usuarioRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }
