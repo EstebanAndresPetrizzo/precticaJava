@@ -36,7 +36,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping (path = "/{id}")
-    public Boolean deleteUser(@PathVariable("id") Long id){
+    public Boolean deleteUser(@PathVariable("id") Long id) throws UserNotFountException {
         return this.usuarioService.deleteUser(id);
     }
 }

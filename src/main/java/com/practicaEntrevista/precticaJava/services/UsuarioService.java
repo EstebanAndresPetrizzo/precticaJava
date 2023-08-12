@@ -42,12 +42,12 @@ public class UsuarioService {
         return user.map(usuarioModel -> modelMapper.map(usuarioModel, UsuarioDTO.class));
     }
 
-    public Boolean deleteUser(Long id) {
+    public Boolean deleteUser(Long id) throws UserNotFountException {
         try {
             usuarioRepository.deleteById(id);
             return true;
         }catch (Exception err){
-            return false;
+            throw new UserNotFountException("No se encontro el usuario con indicado con id: " + id);
         }
     }
 }

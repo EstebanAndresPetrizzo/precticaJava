@@ -2,3 +2,7 @@ mvn clean install
 docker buil -t practica-java:1.0 .
 docker images
 docker run --publish 8080:8080 {imageId}
+
+
+
+http://localhost:8080/swagger-ui/index.html#/
