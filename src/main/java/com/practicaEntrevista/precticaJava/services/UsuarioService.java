@@ -1,5 +1,7 @@
 package com.practicaEntrevista.precticaJava.services;
 
+import com.practicaEntrevista.precticaJava.DTO.UsuarioDTO;
+import com.practicaEntrevista.precticaJava.exception.UserNotFountException;
 import com.practicaEntrevista.precticaJava.model.UsuarioModel;
 import com.practicaEntrevista.precticaJava.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,9 @@ public class UsuarioService {
                 .collect(Collectors.toList());
     }
 
-    public UsuarioDTO seveUser(UsuarioDTO usuario){
-        UsuarioModel user = modelMapper.map(usuario, UsuarioModel.class);
-        return modelMapper.map(usuarioRepository.save(user), UsuarioDTO.class);
+    public Optional<UsuarioDTO> seveUser(UsuarioDTO usuario){
+        UsuarioModel user = usuarioRepository.save(modelMapper.map(usuario, UsuarioModel.class));
+        return findById(user.getId());
     }
 
     public List<UsuarioDTO> findByName(String nombre){
@@ -40,11 +42,11 @@ public class UsuarioService {
         return user.map(usuarioModel -> modelMapper.map(usuarioModel, UsuarioDTO.class));
     }
 
-    public Boolean deleteUser(Long id){
+    public Boolean deleteUser(Long id) {
         try {
             usuarioRepository.deleteById(id);
             return true;
-        }catch (Exception e){
+        }catch (Exception err){
             return false;
         }
     }

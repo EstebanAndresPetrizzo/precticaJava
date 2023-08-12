@@ -1,4 +1,4 @@
-package com.practicaEntrevista.precticaJava.services;
+package com.practicaEntrevista.precticaJava.DTO;
 
 import lombok.Getter;
 import lombok.Setter;

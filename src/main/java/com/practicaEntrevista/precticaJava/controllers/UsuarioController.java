@@ -1,6 +1,7 @@
 package com.practicaEntrevista.precticaJava.controllers;
 
-import com.practicaEntrevista.precticaJava.services.UsuarioDTO;
+import com.practicaEntrevista.precticaJava.DTO.UsuarioDTO;
+import com.practicaEntrevista.precticaJava.exception.UserNotFountException;
 import com.practicaEntrevista.precticaJava.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public UsuarioDTO saveUser(@RequestBody UsuarioDTO usuario){
+    public Optional<UsuarioDTO> saveUser(@RequestBody UsuarioDTO usuario){
         return this.usuarioService.seveUser(usuario);
     }
 
