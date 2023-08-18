@@ -1,4 +1,4 @@
-package com.practicaEntrevista.precticaJava;
+package com.practica_entrevista.prectica_java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

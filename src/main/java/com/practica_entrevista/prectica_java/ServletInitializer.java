@@ -1,4 +1,4 @@
-package com.practicaEntrevista.precticaJava;
+package com.practica_entrevista.prectica_java;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
